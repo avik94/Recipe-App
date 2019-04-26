@@ -1,0 +1,13 @@
+<div class="container">
+    <app-header></app-header>
+    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;">
+        <div class="col-sm-5">        
+            <app-recipe></app-recipe>
+        </div>
+        <div class="col-sm-7">
+            <app-recipe-detail 
+            *ngIf = "recipeDetails"
+            [data] = "singleRecipeData"></app-recipe-detail>
+        </div>
+    </div>
+</div>

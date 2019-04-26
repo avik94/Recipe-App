@@ -1,0 +1,24 @@
+.description{
+    background: #0e3d6563;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 900;
+    font-family: cursive;
+    width: 48%;
+}
+.listGroup{
+    padding: 20px;
+    width: 20%;
+    list-style: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+     0 0 40px rgba(0, 0, 0, 0.1) inset;
+     margin-top: 5px;
+    
+    
+}
+.listGroup li{
+    font-size: 14px;
+    color: rgb(1, 24, 54);
+    font-weight: bold;
+    font-family: cursive;
+}
