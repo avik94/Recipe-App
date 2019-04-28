@@ -1,3 +1,12 @@
+.recipeContainer{
+    margin-top: 80px;
+}
+.recipeContainer img{
+    padding: 10px;
+    border:1px solid grey;
+    background: #f8f8f8;
+    border-radius: 10px;
+}
 .description{
     background: #0e3d6563;
     padding: 10px;
