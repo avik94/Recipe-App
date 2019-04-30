@@ -9,4 +9,10 @@
             <li class="list-item" style="padding: 5px;">Edit</li>
         </ul>
     </div>
+    <div class="row" style="width:50%">
+            <app-list-ingredient 
+            *ngFor = "let ingredient of ingredience"
+            [ingredienceData] = "ingredient"
+            ></app-list-ingredient>
+    </div>
 </div>
