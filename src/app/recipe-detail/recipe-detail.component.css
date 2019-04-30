@@ -1,12 +1,3 @@
-.recipeContainer{
-    margin-top: 80px;
-}
-.recipeContainer img{
-    padding: 10px;
-    border:1px solid grey;
-    background: #f8f8f8;
-    border-radius: 10px;
-}
 .description{
     background: #0e3d6563;
     padding: 10px;
@@ -21,13 +12,17 @@
     list-style: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
      0 0 40px rgba(0, 0, 0, 0.1) inset;
-     margin-top: 5px;
     
-    
+}
+.listGroup{
+    display: none;
 }
 .listGroup li{
     font-size: 14px;
     color: rgb(1, 24, 54);
     font-weight: bold;
     font-family: cursive;
+}
+.open~ul{
+    display: block;
 }
