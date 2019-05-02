@@ -12,6 +12,11 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ManageButtonDirective } from './directive/manage-button.directive';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { ListIngredientComponent } from './ingredient/list-ingredient/list-ingredient.component';
+import { Routes,RouterModule } from "@angular/router";
+
+const appRoute:Routes = [
+  { path: 'ingredient', component: IngredientComponent }
+]
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { ListIngredientComponent } from './ingredient/list-ingredient/list-ingre
     ListIngredientComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoute)
   ],
   providers: [RecipeService,IngredienceService],
   bootstrap: [AppComponent]

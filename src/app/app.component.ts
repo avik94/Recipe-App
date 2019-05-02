@@ -10,10 +10,10 @@ import { IngredienceService } from './common/ingredience.service';
 export class AppComponent implements OnInit {
 
   recipeDetails = false;
-  ingredienceSection;   // will change with routing
+  showEntireRecipe = true;
   singleRecipeData;
   constructor(private recipeService:RecipeService,
-    private ingredienceService:IngredienceService){
+    private ingredienceService : IngredienceService){
     this.recipeService.recipeDetailEvent.subscribe((data)=>{
       this.recipeDetails = data;
     });
@@ -23,14 +23,17 @@ export class AppComponent implements OnInit {
     this.recipeService.singleRecipeData.subscribe((data)=>{
       this.singleRecipeData = data;
     });
+    this.ingredienceService.recipeDataEvent.subscribe((data)=>{ //will change with routing
+      this.showEntireRecipe = data;
+    })
+    this.ingredienceService.recipeDataShowEvent.subscribe((data)=>{
+      this.showEntireRecipe = true;                             // to here
+    }) 
   }
 
   ngOnInit(){
-    this.ingredienceSection = this.ingredienceService.ingredienceSection
   }
-  openIngredience(){                                     //temporary
-    this.ingredienceSection = !this.ingredienceSection;
-  }
+  
   title = 'recipe';
 }
 

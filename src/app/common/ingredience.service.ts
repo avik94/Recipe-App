@@ -1,4 +1,5 @@
 import { Ingredience } from '../ingredient/ingredience.model';
+import { EventEmitter } from '@angular/core';
 
 export class IngredienceService{
     ingredience:Ingredience[] = [
@@ -6,7 +7,8 @@ export class IngredienceService{
         new Ingredience('Tomatoes',10)
     ]
     //will change when routing added
-    ingredienceSection = false;
+    recipeDataEvent = new EventEmitter();
+    recipeDataShowEvent = new EventEmitter();
     //
     getAllIngredience(){
         return this.ingredience;

@@ -1,11 +1,9 @@
 <div class="container">
     <app-header></app-header>
-    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;min-height: 700px;">
+    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;min-height: 500px;"
+    *ngIf = "showEntireRecipe">
         <div class="col-sm-5">        
             <app-recipe></app-recipe>
-            <!-- for temporary purpose -->
-            <button class="btn btn-primary" (click) = openIngredience();>Add Ingredience</button>
-            <!-- end -->
         </div>
         <div class="col-sm-7">
             <app-recipe-detail 
@@ -13,9 +11,9 @@
             [data] = "singleRecipeData"></app-recipe-detail>        
         </div>
     </div>    
-    <div class="row" *ngIf = "ingredienceSection">
-        <div class="col-sm-7">
-            <app-ingredient></app-ingredient>
+    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;">
+        <div class="col-sm-6 col-sm-offset-2" >
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
