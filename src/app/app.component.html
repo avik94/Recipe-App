@@ -8,7 +8,8 @@
         <div class="col-sm-7">
             <app-recipe-detail 
             *ngIf = "recipeDetails"
-            [data] = "singleRecipeData"></app-recipe-detail>        
+            [data] = "singleRecipeData"
+            [ingred] = "singleRecipeData.ingrediences"></app-recipe-detail>        
         </div>
     </div>    
     <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;">

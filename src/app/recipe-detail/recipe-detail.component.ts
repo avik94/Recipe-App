@@ -9,13 +9,16 @@ import { Ingredience } from '../ingredient/ingredience.model';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() data;
-  ingredience:Ingredience[];
+  @Input() ingred;
   
   constructor(private ingredienceService:IngredienceService){
     
   }
   ngOnInit() {
-    this.ingredience = this.ingredienceService.getAllIngredience();
+    //will change soon
+    // const newArry = this.data.ingrediences.slice();
+    // this.ingredience = newArry;
+    console.log(this.ingred)
   }
 
 }
