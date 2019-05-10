@@ -1,0 +1,13 @@
+<a [routerLink]="['/recipe' , index ,'detail']">
+  <div class="panel customPanel">
+    <div class="panel-body">
+      <div style="float:left">
+        <h4>{{ recipeData.name }}</h4>
+        <p>{{recipeData.description}}</p>
+      </div>
+      <div style="float:right">
+          <img class="imgWrapper" [src]="recipeData.url" alt="">
+        </div>
+    </div>
+  </div>
+</a>

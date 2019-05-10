@@ -1,14 +1,6 @@
-import { Ingredience } from '../ingredient/ingredience.model';
+import { Ingredient } from '../shopping/ingredient.model';
 
 export class Recipe{
-    name:string;
-    description:string;
-    url:string;
-    ingrediences:Ingredience[]
-    constructor(name:string,description:string,url:string,ingrediences:Ingredience[]){
-        this.name = name;
-        this.description = description;
-        this.url = url;
-        this.ingrediences =ingrediences;
-    }
+    constructor( public name:string, public url:string, 
+        public description:string, public ingredient:Ingredient[]){}
 }

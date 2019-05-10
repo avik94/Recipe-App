@@ -1,40 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { RecipeComponent } from './recipe/recipe.component';
 import { HeaderComponent } from './header/header.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { ShoppingComponent } from './shopping/shopping.component'
+import { Routes, RouterModule } from "@angular/router";
+import { RecipeService } from "./recipe/recipe.service";
+import { IngredientService } from "./shared/ingredient.service";
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
-import { RecipeService } from './recipe/recipe.service';
-import { IngredienceService } from './common/ingredience.service';
-import { AddRecipeComponent } from './recipe/add-recipe/add-recipe.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
-import { ManageButtonDirective } from './directive/manage-button.directive';
-import { IngredientComponent } from './ingredient/ingredient.component';
-import { ListIngredientComponent } from './ingredient/list-ingredient/list-ingredient.component';
-import { Routes,RouterModule } from "@angular/router";
+import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { DefaultMsgComponent } from './recipe/default-msg/default-msg.component';
+import { IngredientListComponent } from './shopping/ingredient-list/ingredient-list.component';
 
-const appRoute:Routes = [
-  { path: 'ingredient', component: IngredientComponent }
-]
+const appRoutes:Routes = [
+  { path: "" , redirectTo:"/recipe", pathMatch:"full"},
+  { path: "recipe", component:RecipeComponent , children: [
+    { path: ":id/detail" ,component: RecipeDetailComponent},
+    { path: "" ,component: DefaultMsgComponent}
+  ]},
+  { path: "shoping-list", component:ShoppingComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeComponent,
     HeaderComponent,
+    RecipeComponent,
+    ShoppingComponent,
     RecipeListComponent,
-    AddRecipeComponent,
+    RecipeItemComponent,
     RecipeDetailComponent,
-    ManageButtonDirective,
-    IngredientComponent,
-    ListIngredientComponent
+    DefaultMsgComponent,
+    IngredientListComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [RecipeService,IngredienceService],
+  providers: [RecipeService, IngredientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

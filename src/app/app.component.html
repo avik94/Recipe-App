@@ -1,21 +1,12 @@
 <div class="container">
-    <app-header></app-header>
-    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;min-height: 500px;"
-    *ngIf = "showEntireRecipe">
-        <div class="col-sm-5">        
-            <app-recipe></app-recipe>
+    <div class="row">
+        <div class="col-sm-12">
+            <app-header></app-header>
         </div>
-        <div class="col-sm-7">
-            <app-recipe-detail 
-            *ngIf = "recipeDetails"
-            [data] = "singleRecipeData"
-            [ingred] = "singleRecipeData.ingrediences"></app-recipe-detail>        
-        </div>
-    </div>    
-    <div class="row" style="background: #67859a38;margin-left: 0px;margin-right: 0px;">
-        <div class="col-sm-6 col-sm-offset-2" >
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <router-outlet></router-outlet>
         </div>
     </div>
 </div>
-

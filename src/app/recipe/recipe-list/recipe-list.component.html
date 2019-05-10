@@ -1,9 +1,9 @@
-<div class="panel panelBody">
-  <div class="left">
-    <p class="recipeName" style="color:#f2f2f2">{{singleRecipeData.name}}</p>
-    <span class="description">{{singleRecipeData.description}}</span>
-  </div>    
-  <div class="right">
-    <img [src] = 'singleRecipeData.url' alt="" style="width:50px;height: 50px;border: 2px solid #f2f2f2;">
+<div class="row">
+  <div class="col-sm-12">
+    <app-recipe-item
+     *ngFor = "let recipe of recipes let i = index"
+      [index] = "i"
+      [recipeData] = "recipe"
+    ></app-recipe-item>
   </div>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IngredienceService } from '../common/ingredience.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +7,9 @@ import { IngredienceService } from '../common/ingredience.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private ingredienceService: IngredienceService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-  closeRecipe(){
-    this.ingredienceService.recipeDataEvent.emit(false);
-  }
-  openRecipe(){
-    this.ingredienceService.recipeDataShowEvent.emit(true);
   }
 
 }

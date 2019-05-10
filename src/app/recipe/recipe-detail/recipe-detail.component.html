@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="recipeImage">
+      <img class = "recipeImage" [src]="recipe.url" alt="">
+    </div>
+    <hr>
+    <h4>{{recipe.description}}</h4>
+    <button class="btn btn-primary">Manage Recipe</button>
+    <app-ingredient-list
+    *ngFor = "let ingredient of ingredients"
+    [ingredient] = "ingredient"
+    >
+    </app-ingredient-list>
+  </div>
+</div>

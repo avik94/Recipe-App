@@ -1,16 +1,9 @@
-<div class="container">
-    <div class="row">
-      <div class="col-sm-5">
-        <button class="btn btn-success btnAdd" style="margin:20px;" (click) = addMore();>Add More</button>
-        <app-recipe-list 
-        *ngFor = "let recipe of recipeList"
-        [singleRecipeData] = 'recipe'
-        (click) = recipeDetails(recipe);>
-      </app-recipe-list>
-      </div>
-      <!-- here recipe details and recipe add will go -->
-      <div class="col-sm-5" style="padding-top:70px;" *ngIf = "addMoreRecipeOpen">
-        <app-add-recipe></app-add-recipe>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-sm-5">
+    <button class="btn btn-primary" style="margin-bottom:10px;">Add More</button>
+    <app-recipe-list></app-recipe-list>
+  </div>
+  <div class="col-sm-7">
+    <router-outlet></router-outlet>
+  </div>
 </div>
