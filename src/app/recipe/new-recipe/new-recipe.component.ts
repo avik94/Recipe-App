@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-recipe',
@@ -19,8 +20,10 @@ export class NewRecipeComponent implements OnInit {
           this.showAdd = false;
         }
       });
-      console.log(this.showEdit);
-      console.log(this.showAdd);
+  }
+
+  loadAddForm(data:NgForm){
+    console.log(data);
   }
 
 }

@@ -5,7 +5,13 @@
     </div>
     <hr>
     <h4>{{recipe.description}}</h4>
-    <button class="btn btn-primary" style="margin-bottom: 8px;">Manage Recipe</button>
+    <div class="dropdown">
+      <button (click) = "openDropDown();" class="btn btn-primary customStyle" style="margin-bottom: 8px;">Manage Recipe</button>
+      <div class="dropdownList" *ngIf = "dropdown">
+        <p style="cursor:pointer" (click)="setIngredient();">Set Ingredient</p>
+        <p style="cursor:pointer" (click)="editIngredient();">Edit Ingredient</p>
+      </div>
+    </div>
     <app-ingredient-list
     *ngFor = "let ingredient of ingredients"
     [ingredient] = "ingredient"

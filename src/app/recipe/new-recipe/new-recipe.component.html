@@ -1,7 +1,46 @@
-<p *ngIf = "showAdd">
-  Add Recipe!
-</p>
+<div *ngIf = "showAdd" class="addForm">
+  <div class="row">
+    <div class="col-sm-12">
+      <form (ngSubmit) = "loadAddForm(addRecipeForm);" #addRecipeForm = "ngForm">
+        <div class="form-group">
+          <label for="">Recipe Name</label>
+          <input 
+            type="text" 
+            class="form-control"
+            ngModel
+            name= "recipeName"
+            #recipeName = "ngModel"
+            required>
+            <p style="color:red" *ngIf = "!recipeName.valid && recipeName.touched">*Please Enter Recipe Name</p>
+        </div>
+        <div class="form-group">
+            <label for="">Image Url</label>
+            <input 
+              type="text" 
+              class="form-control"
+              ngModel
+              name= "imageUrl"
+              #image = "ngModel"
+              required>
+              <p style="color:red" *ngIf = "!image.valid && image.touched">*Please Enter Recipe Url</p>
+        </div>
+        <div class="form-group">
+            <label for="">Recipe Description</label>
+            <textarea 
+              class="form-control" 
+              cols="50" 
+              rows="5"
+              ngModel
+              name="description"
+              #description= "ngModel"></textarea>
+              <p style="color:red" *ngIf = "!image.valid && image.touched">*Please Enter a Description</p>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled] = "!addRecipeForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-<p *ngIf = "showEdit">
-  Edit Recipe!
-</p>
+<div *ngIf = "showEdit">
+  <p>Edit Recipe!</p>
+</div>

@@ -2,3 +2,22 @@
     width: 600px;
     height: 370px;
 }
+.dropdownList{
+    padding: 0px;
+}
+.customStyle{
+    width: 120px;
+    height: 40px;
+    -webkit-transition: width 1s, height 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 0.3s, height 0.3s;
+}
+.customStyle:hover{
+    width: 130px;
+    height: 45px;
+}
+.dropdownList{
+    padding: 15px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 8px;
+    width:40%;   
+}
