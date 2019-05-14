@@ -11,7 +11,7 @@ export class RecipeService{
              new Ingredient("Onion", 2),
              new Ingredient("Chicken", 5)
          ]),
-         new Recipe("Mutton", "https://www.seriouseats.com/recipes/images/2016/12/20161201-crispy-roast-potatoes-29-1500x1125.jpg",
+         new Recipe("Mutton", "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/pal.rini1-gmail.com/Mangsher_Jhol_Bengali_Style_Mutton_Curry.jpg",
          "What to say!!!!",[
              new Ingredient("Mutton", 2),
              new Ingredient("Garlic", 5)
