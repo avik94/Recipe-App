@@ -1,13 +1,30 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="form-group">
-      <label>Ingredient Name</label>
-      <input type="text" class="form-control">
-      <label>Ammount</label>
-      <input type="text" class="form-control">
-      <br>
-      <button class="btn btn-primary">Submit</button>
-    </div>
+    <form (ngSubmit) = "saveIngredients(ingredForm);" #ingredForm = "ngForm">
+      <div class="form-group">
+        <label>Ingredient Name</label>
+        <input
+          ngModel
+          name= "ingredient" 
+          type="text" 
+          class="form-control"
+          #name ="ngModel"
+          required>
+          <p *ngIf= "!name.valid && name.touched" style="color:red">Please Enter Ammount</p>
+        <label>Ammount</label>
+        <input 
+          ngModel
+          name= "ammount"
+          type="number" 
+          class="form-control"
+          #ammount= "ngModel"
+          required>
+          <p *ngIf= "!ammount.valid && ammount.touched" style="color:red">Please Enter Ammount</p>
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled] = "!ingredForm.valid">Add Items</button>
+        <button type="button" class="btn btn-primary" style="margin-left:10px;" (click)="submit();">Submit</button>
+      </div>
+    </form>
   </div>
   <app-ingredient-list 
     *ngFor = "let ingredient of ingredients"

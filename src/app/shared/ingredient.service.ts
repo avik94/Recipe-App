@@ -1,4 +1,4 @@
-import { Ingredient } from '../shopping/ingredient.model';
+import { Ingredient } from '../shopping/ingredient.model'; 
 
 export class IngredientService{
     ingredients:Ingredient[] = [
@@ -7,7 +7,16 @@ export class IngredientService{
     ]
 
     getIngredient(){
-        return this.ingredients.slice();
+        return this.ingredients;
+    }
+    addIngredient(ingredient, ammount,id){
+        const newIngredient = new Ingredient(ingredient,ammount)
+        this.ingredients.push(newIngredient);
+        console.log(id)
+    }
+
+    clearAllIngredients(){
+        this.ingredients = [];
     }
 
 }

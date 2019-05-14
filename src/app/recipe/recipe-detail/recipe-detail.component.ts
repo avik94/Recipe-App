@@ -33,7 +33,7 @@ export class RecipeDetailComponent implements OnInit {
     this.dropdown = !this.dropdown;
   }
   setIngredient(){
-    this.router.navigate(['shoping-list']);
+    this.router.navigate(['/shoping-list', this.recipeIndex, 'set']);
     this.dropdown = false;
 
   }
