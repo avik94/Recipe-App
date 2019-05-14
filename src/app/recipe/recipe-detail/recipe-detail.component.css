@@ -2,9 +2,9 @@
     width: 600px;
     height: 370px;
 }
-.dropdownList{
+/* .dropdownList{
     padding: 0px;
-}
+} */
 .customStyle{
     width: 120px;
     height: 40px;
@@ -20,4 +20,7 @@
     border: 1px solid rgb(228, 228, 228);
     border-radius: 8px;
     width:40%;   
+    z-index: 99999!important;
+    position: absolute!important;
+    background: #ffffff;
 }
