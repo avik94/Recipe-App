@@ -18,7 +18,13 @@ export class RecipeService{
     getRecipes(){
         return this.recipes;
     }
+
     getRecipeById(id){
         return this.recipes[id];
+    }
+
+    addRecipe(name:string,url:string,des:string){
+        const newRecipe = new Recipe(name,url,des,[]);
+        this.recipes.push(newRecipe);
     }
 }

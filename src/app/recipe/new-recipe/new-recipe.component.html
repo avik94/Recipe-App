@@ -32,8 +32,9 @@
               rows="5"
               ngModel
               name="description"
-              #description= "ngModel"></textarea>
-              <p style="color:red" *ngIf = "!image.valid && image.touched">*Please Enter a Description</p>
+              #description= "ngModel" 
+              required></textarea>
+              <p style="color:red" *ngIf = "!description.valid && description.touched">*Please Enter a Description</p>
         </div>
         <button type="submit" class="btn btn-primary" [disabled] = "!addRecipeForm.valid">Submit</button>
       </form>
