@@ -3,3 +3,9 @@
     padding: 8px;
     
 }
+.addForm input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+.addForm textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
