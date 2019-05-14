@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,12 +13,15 @@ import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-ite
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { DefaultMsgComponent } from './recipe/default-msg/default-msg.component';
 import { IngredientListComponent } from './shopping/ingredient-list/ingredient-list.component';
+import { NewRecipeComponent } from './recipe/new-recipe/new-recipe.component';
 
 const appRoutes:Routes = [
   { path: "" , redirectTo:"/recipe", pathMatch:"full"},
   { path: "recipe", component:RecipeComponent , children: [
     { path: ":id/detail" ,component: RecipeDetailComponent},
-    { path: "" ,component: DefaultMsgComponent}
+    { path: "new" ,component: NewRecipeComponent},
+    { path: ":id/edit" ,component: NewRecipeComponent},
+    { path: "" ,component: DefaultMsgComponent},
   ]},
   { path: "shoping-list", component:ShoppingComponent}
 ];
@@ -33,7 +36,8 @@ const appRoutes:Routes = [
     RecipeItemComponent,
     RecipeDetailComponent,
     DefaultMsgComponent,
-    IngredientListComponent
+    IngredientListComponent,
+    NewRecipeComponent
   ],
   imports: [
     BrowserModule,
