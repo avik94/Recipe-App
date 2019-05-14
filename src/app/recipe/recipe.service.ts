@@ -36,7 +36,5 @@ export class RecipeService{
     getSeparateIngredience(id){
         const ingredience = this.ingredientService.getIngredient().slice();
         this.getRecipeById(id).ingredient = ingredience;
-        console.log(this.getRecipeById(id).ingredient)
-        console.log(ingredience)
     }
 }
