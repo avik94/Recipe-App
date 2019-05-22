@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IngredientService } from "../shared/ingredient.service"
 import { Ingredient } from './ingredient.model';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -12,29 +12,42 @@ import { RecipeService } from '../recipe/recipe.service';
 })
 export class ShoppingComponent implements OnInit {
   ingredients:Ingredient[];
-  recipeId;
+  recipeId:number;
+  ingredientIndex:number;
+  showDelete = false;
+  @ViewChild('ingredForm') formData:NgForm;
 
   constructor(private ingredientService:IngredientService,
     private recipeService:RecipeService,
     private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.ingredients = this.ingredientService.getIngredient();
+    const ingredients = this.recipeService.getRecipes();
+    console.log(ingredients)
     this.route.params.subscribe(
       (param: Params)=>{
         this.recipeId = param.id
+        this.ingredients = ingredients[+param.id].ingredient
       }
     );
   }
 
-  saveIngredients(data:NgForm){
-    this.ingredientService.addIngredient(data.value.ingredient, data.value.ammount,this.recipeId);
-    data.reset();  
+  saveIngredients(formData:NgForm){
+    this.ingredients.push(formData.value);
+    formData.reset();  
+  } 
+  clearAll(){
+    this.formData.reset();
   }
-
-  submit(){
-    this.recipeService.getSeparateIngredience(this.recipeId);
-    this.ingredientService.clearAllIngredients();
+  selectEachIngredient(ingredient:Ingredient,index:number){
+    this.formData.setValue({
+      'name': ingredient.name,
+      'ammount': ingredient.ammount
+    });
+    this.showDelete = true;
+    this.ingredientIndex = index
   }
-  
+  deleteIngredient(){
+    this.ingredients.splice(this.ingredientIndex,1)
+  }
 }

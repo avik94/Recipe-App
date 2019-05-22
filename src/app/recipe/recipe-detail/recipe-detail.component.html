@@ -4,12 +4,14 @@
       <img class = "recipeImage" [src]="recipe.url" alt="">
     </div>
     <hr>
+    <h1>{{recipe.name}}</h1>
     <h4>{{recipe.description}}</h4>
     <div class="dropdown">
       <button (click) = "openDropDown();" class="btn btn-primary customStyle" style="margin-bottom: 8px;">Manage Recipe</button>
       <div class="dropdownList" *ngIf = "dropdown">
         <p style="cursor:pointer" (click)="setIngredient();"><b>Set Ingredient</b></p>
         <p style="cursor:pointer" (click)="editIngredient();"><b>Edit Ingredient</b></p>
+        <p style="cursor:pointer" (click)="deleteIngredient();"><b>Delete</b></p>
       </div>
     </div>
     <app-ingredient-list

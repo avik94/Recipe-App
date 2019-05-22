@@ -41,5 +41,9 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate(['/recipe', this.recipeIndex , 'edit']);
     this.dropdown = false;
   }
+  deleteIngredient(){
+    this.recipeService.deleteRecipe(this.recipeIndex);
+    this.router.navigate(['recipe'])
+  }
 
 }

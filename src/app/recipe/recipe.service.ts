@@ -1,11 +1,11 @@
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shopping/ingredient.model';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { IngredientService } from '../shared/ingredient.service';
 
 @Injectable()
 export class RecipeService{
-    recipes:Recipe[] = [
+    private recipes:Recipe[] = [
         new Recipe("Chicken", "https://www.seriouseats.com/recipes/images/2016/12/20161201-crispy-roast-potatoes-29-1500x1125.jpg",
          "Very Tasty",[
              new Ingredient("Onion", 2),
@@ -17,24 +17,39 @@ export class RecipeService{
              new Ingredient("Garlic", 5)
          ])
     ]
-
+    recipesChanges = new EventEmitter();
     constructor( private ingredientService: IngredientService ){ }
 
     getRecipes(){
-        return this.recipes;
+        return this.recipes.slice();
     }
 
     getRecipeById(id){
         return this.recipes[id];
     }
 
-    addRecipe(name:string,url:string,des:string){
-        const newRecipe = new Recipe(name,url,des,[]);
+    addRecipe(newRecipe:Recipe){
         this.recipes.push(newRecipe);
+        this.recipesChanges.emit(this.recipes.slice());
+    }
+    updateRecipe(index: number, newRecipe:Recipe){
+        this.recipes[index] = newRecipe
+        this.recipesChanges.emit(this.recipes.slice());
+    }
+    deleteRecipe(index:number){
+        this.recipes.splice(index,1);
+        this.recipesChanges.emit(this.recipes.slice());
     }
 
     getSeparateIngredience(id){
         const ingredience = this.ingredientService.getIngredient().slice();
         this.getRecipeById(id).ingredient = ingredience;
     }
+    // deleteIngredient(recipeId:number, ingredientId:number){
+    //     this.recipes[recipeId].ingredient.splice(ingredientId,1);
+    //     this.recipesChanges.emit(this.recipes.slice());
+    // }
+
+
+    
 }

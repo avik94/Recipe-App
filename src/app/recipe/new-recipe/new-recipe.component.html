@@ -1,47 +1,84 @@
-<div *ngIf = "showAdd" class="addForm">
-  <div class="row">
-    <div class="col-sm-12">
-      <form (ngSubmit) = "loadAddForm(addRecipeForm);" #addRecipeForm = "ngForm">
-        <div class="form-group">
-          <label for="">Recipe Name</label>
-          <input 
-            type="text" 
-            class="form-control"
-            ngModel
-            name= "recipeName"
-            #recipeName = "ngModel"
-            required>
-            <p style="color:red" *ngIf = "!recipeName.valid && recipeName.touched">*Please Enter Recipe Name</p>
+<div class="row">
+  <div class="col-sm-12" style="width:100%;">
+    <form (ngSubmit) = "saveForm()" [formGroup] = "recipeForm">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <button type="submit" [disabled] = "!recipeForm.valid" class="btn btn-success" style="margin-right:10px">Save</button>
+            <button type="button" class="btn btn-danger" (click) = cancel()>Cancel</button>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="">Image Url</label>
-            <input 
-              type="text" 
-              class="form-control"
-              ngModel
-              name= "imageUrl"
-              #image = "ngModel"
-              required>
-              <p style="color:red" *ngIf = "!image.valid && image.touched">*Please Enter Recipe Url</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+            formControlName = "name"
+            class="form-control" 
+            type="text">
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input
+            formControlName = "url"
+            class="form-control" 
+            type="text">
+          </div>
         </div>
-        <div class="form-group">
-            <label for="">Recipe Description</label>
-            <textarea 
-              class="form-control" 
-              cols="50" 
-              rows="5"
-              ngModel
-              name="description"
-              #description= "ngModel" 
-              required></textarea>
-              <p style="color:red" *ngIf = "!description.valid && description.touched">*Please Enter a Description</p>
+        <div class="previewImage" *ngIf = "openFirstPreviewImage">
+            <img [src]="firstPreviewImage" class="img-responsive" style="width:30%;margin-left:20px;">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled] = "!addRecipeForm.valid">Submit</button>
-      </form>
-    </div>
+        <div class="previewImage" *ngIf = "normalPreviewImage">
+          <img [src]="previewImage" class="img-responsive" style="width:30%;margin-left:20px;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="image">Description</label>
+            <textarea
+            formControlName = "description"
+            cols="10"
+            rows="5"
+            class="form-control" 
+            type="text">
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row" formArrayName = "ingredient" 
+        *ngFor = "let ingredient of recipeForm.get('ingredient').controls let i = index">
+        <div [formGroupName] = "i">
+          <div class="col-sm-8">
+              <div class="form-group">
+                <input 
+                formControlName = "name"
+                class="form-control"
+                type="text">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <input 
+                formControlName = "ammount"
+                class="form-control"
+                pattern = "[1-9][0-9]{0,4}"
+                type="number">
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <button type="button" class="btn btn-danger" (click)="deleteIngerdient()">X</button>
+              </div>
+            </div>
+        </div> 
+      </div>
+      <button type="button" class="btn btn-success" (click) = addIngredient()>Add Ingredients</button>       
+    </form>
   </div>
-</div>
-
-<div *ngIf = "showEdit">
-  <p>Edit Recipe!</p>
 </div>
