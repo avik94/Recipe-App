@@ -1,18 +1,18 @@
 import { Ingredient } from '../shopping/ingredient.model'; 
+import { EventEmitter } from '@angular/core';
 
 export class IngredientService{
-    ingredients:Ingredient[] = [
-        new Ingredient("Onion", 2),
-        new Ingredient("Garlic", 3),
-    ]
-
+    ingredients:Ingredient[] = [];
+    getRecipedetailsEvent = new EventEmitter<Ingredient[]>()
     getIngredient(){
         return this.ingredients;
+    }
+    addEntireIngredient(ingredients){
+        this.ingredients.push(...ingredients);
     }
     addIngredient(ingredient, ammount,id){
         const newIngredient = new Ingredient(ingredient,ammount)
         this.ingredients.push(newIngredient);
-        console.log(id)
     }
 
     clearAllIngredients(){

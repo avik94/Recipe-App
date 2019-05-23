@@ -30,11 +30,8 @@
             type="text">
           </div>
         </div>
-        <div class="previewImage" *ngIf = "openFirstPreviewImage">
-            <img [src]="firstPreviewImage" class="img-responsive" style="width:30%;margin-left:20px;">
-        </div>
-        <div class="previewImage" *ngIf = "normalPreviewImage">
-          <img [src]="previewImage" class="img-responsive" style="width:30%;margin-left:20px;">
+        <div class="previewImage">
+          <img [src]="recipeForm.value.url" class="img-responsive" style="width:30%;margin-left:20px;">          
         </div>
       </div>
       <div class="row">

@@ -12,9 +12,6 @@ export class NewRecipeComponent implements OnInit {
 
   index;
   previewImage;
-  firstPreviewImage;
-  normalPreviewImage = false
-  openFirstPreviewImage = true;
   editMode = false;
   recipeForm:FormGroup
   constructor( private route:ActivatedRoute, 
@@ -28,12 +25,6 @@ export class NewRecipeComponent implements OnInit {
           this.index = +param.id
         }
         this.formInit();
-        this.firstPreviewImage = this.recipeForm.value.url
-        this.recipeForm.valueChanges.subscribe((data)=>{
-          this.normalPreviewImage = true;
-          this.openFirstPreviewImage = false;
-          this.previewImage = data.url;
-        })
       }); 
   }
   private formInit(){

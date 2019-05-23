@@ -44,12 +44,5 @@ export class RecipeService{
     getSeparateIngredience(id){
         const ingredience = this.ingredientService.getIngredient().slice();
         this.getRecipeById(id).ingredient = ingredience;
-    }
-    // deleteIngredient(recipeId:number, ingredientId:number){
-    //     this.recipes[recipeId].ingredient.splice(ingredientId,1);
-    //     this.recipesChanges.emit(this.recipes.slice());
-    // }
-
-
-    
+    }    
 }

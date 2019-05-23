@@ -11,6 +11,7 @@ import { RecipeService } from '../recipe/recipe.service';
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent implements OnInit {
+  avik
   ingredients:Ingredient[];
   recipeId:number;
   ingredientIndex:number;
@@ -22,14 +23,7 @@ export class ShoppingComponent implements OnInit {
     private route:ActivatedRoute) { }
 
   ngOnInit() {
-    const ingredients = this.recipeService.getRecipes();
-    console.log(ingredients)
-    this.route.params.subscribe(
-      (param: Params)=>{
-        this.recipeId = param.id
-        this.ingredients = ingredients[+param.id].ingredient
-      }
-    );
+    this.ingredients = this.ingredientService.getIngredient();
   }
 
   saveIngredients(formData:NgForm){

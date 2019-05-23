@@ -24,9 +24,8 @@ const appRoutes:Routes = [
     { path: ":id/edit" ,component: NewRecipeComponent},
     { path: "" ,component: DefaultMsgComponent},
   ]},
-  { path: "shoping-list", component:ShoppingComponent},
-  { path: "shoping-list/:id/set" ,component: ShoppingComponent}
-];
+  { path: "shoping-list", component:ShoppingComponent}
+];  
 
 @NgModule({
   declarations: [
