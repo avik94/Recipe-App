@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 export class IngredientService{
     ingredients:Ingredient[] = [];
     getRecipedetailsEvent = new EventEmitter<Ingredient[]>()
+    loginLogoutButton = new EventEmitter<boolean>()
     getIngredient(){
         return this.ingredients;
     }

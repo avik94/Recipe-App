@@ -1,0 +1,12 @@
+.err{
+    color: red
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+.wrapper{
+    padding: 20px;
+    border: 1px solid grey;
+    margin-top: 20px;
+    border-radius: 5px;
+}

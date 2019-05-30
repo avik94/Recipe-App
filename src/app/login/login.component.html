@@ -1,3 +1,34 @@
-<p>
-  login works!
-</p>
+<div class="container">
+    <div class="row">
+      <h3 style="margin-left: 250px">Recipe Book Login Form</h3>
+      <div class="col-sm-8 col-sm-offset-2 wrapper">
+        <form (ngSubmit)="loginFormSubmit()" [formGroup] = "loginForm">
+            <div class="col-sm-12 formWrapper">
+              <div class="form-group">
+                <label>Email</label>
+                <input 
+                  type="text" 
+                  class="form-control"
+                  formControlName="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                  <span class="err" *ngIf= "!loginForm.get('email').valid && loginForm.get('email').touched"><p>Provide Proper Email</p></span>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input 
+                  type="password"
+                  formControlName="password"
+                  class="form-control">
+                  <span class="err" *ngIf= "!loginForm.get('password').valid && loginForm.get('password').touched"><p>Password Required</p></span>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled] = "!loginForm.valid">Log In</button>
+              </div>
+              <P>New User! Please <span style="font-size: 15px;"><a routerLink="/signin"> Sign In</a></span> </P>
+              <hr>
+              <P><a routerLink="/recipe">Go Back</a></P>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
