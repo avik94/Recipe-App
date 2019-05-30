@@ -15,16 +15,24 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { DefaultMsgComponent } from './recipe/default-msg/default-msg.component';
 import { IngredientListComponent } from './shopping/ingredient-list/ingredient-list.component';
 import { NewRecipeComponent } from './recipe/new-recipe/new-recipe.component';
+import { SigninComponent } from './signin/signin.component';
+import { LoginComponent } from './login/login.component';
+import { WholeAppComponent } from './whole-app/whole-app.component';
 
 const appRoutes:Routes = [
-  { path: "" , redirectTo:"/recipe", pathMatch:"full"},
-  { path: "recipe", component:RecipeComponent , children: [
-    { path: ":id/detail" ,component: RecipeDetailComponent},
-    { path: "new" ,component: NewRecipeComponent},
-    { path: ":id/edit" ,component: NewRecipeComponent},
-    { path: "" ,component: DefaultMsgComponent},
+  { path: "", redirectTo:"/recipe", pathMatch:"full"},
+  { path: "", component: WholeAppComponent, children:[    
+    { path: "recipe", component:RecipeComponent , children: [
+      { path: ":id/detail" ,component: RecipeDetailComponent},
+      { path: "new" ,component: NewRecipeComponent},
+      { path: ":id/edit" ,component: NewRecipeComponent},
+      { path: "" ,component: DefaultMsgComponent},
+    ]},
+    { path: "shoping-list", component:ShoppingComponent},
+
   ]},
-  { path: "shoping-list", component:ShoppingComponent}
+  { path: "signin", component: SigninComponent},
+  { path: "login", component: LoginComponent}
 ];  
 
 @NgModule({
@@ -38,7 +46,10 @@ const appRoutes:Routes = [
     RecipeDetailComponent,
     DefaultMsgComponent,
     IngredientListComponent,
-    NewRecipeComponent
+    NewRecipeComponent,
+    SigninComponent,
+    LoginComponent,
+    WholeAppComponent
   ],
   imports: [
     BrowserModule,

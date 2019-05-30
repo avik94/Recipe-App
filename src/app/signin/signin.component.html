@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <form (ngSubmit)="submitform(f)" #f = "ngForm">
+        <div class="col-sm-8 col-sm-offset-2 formWrapper">
+          <div class="form-group">
+            <label>Name</label>
+            <input 
+              type="text" 
+              name="name"
+              ngModel
+              class="form-control"
+              #name = "ngModel"
+              required>
+              <span class="err" *ngIf= "!name.valid && name.touched"><p>Provide Value</p></span>
+          </div>
+          <div class="form-group">
+              <label>Email</label>
+              <input 
+                type="text" 
+                class="form-control"
+                ngModel
+                name="email"
+                #email = "ngModel"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <span class="err" *ngIf= "!email.valid && email.touched"><p>Provide Email</p></span>
+          </div>
+          <div class="form-group">
+              <label>Password</label>
+              <input 
+                type="password"
+                name="password"
+                ngModel 
+                class="form-control"
+                required
+                #password = "ngModel">
+                <span class="err" *ngIf= "!password.valid && password.touched"><p>Password Required</p></span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled] = "!f.valid">Sign In</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
