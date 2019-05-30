@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,7 @@ import { NewRecipeComponent } from './recipe/new-recipe/new-recipe.component';
 import { SigninComponent } from './signin/signin.component';
 import { LoginComponent } from './login/login.component';
 import { WholeAppComponent } from './whole-app/whole-app.component';
+import { ServerService } from './server.service';
 
 const appRoutes:Routes = [
   { path: "", redirectTo:"/recipe", pathMatch:"full"},
@@ -55,9 +57,10 @@ const appRoutes:Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RecipeService, IngredientService],
+  providers: [RecipeService, IngredientService, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

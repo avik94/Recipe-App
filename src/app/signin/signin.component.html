@@ -47,6 +47,14 @@
           </div>
           <p><a routerLink="/recipe">Go Back</a></p>
         </div>
-    </form>
+    </form>    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div *ngIf = "showMsg" class="msg">
+        {{message}}
+    </div>
   </div>
 </div>

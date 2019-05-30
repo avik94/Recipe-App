@@ -1,6 +1,12 @@
 .err{
     color: red
 }
+.msg{
+    padding: 24px;
+    border: 1px solid red;
+    margin: 12px 276px;
+    width: 60%;
+}
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }

@@ -8,3 +8,8 @@
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
+.msg{
+    margin: 42px 104px;
+    padding: 20px;
+    border: 1px solid green;
+}
