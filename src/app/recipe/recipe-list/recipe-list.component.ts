@@ -17,7 +17,7 @@ export class RecipeListComponent implements OnInit {
         this.recipes = data
       }
     )
-    this.recipes = this.recipeService.getRecipes();
+    // this.recipes = this.recipeService.getRecipes();
   }
 
 }

@@ -19,10 +19,11 @@ export class SigninComponent implements OnInit {
   submitform(data:NgForm){
     this.serverService.createUser(data.value).subscribe(
       (response)=>{
-        if(response["msg"] === "Email Already Registered"){
+        if(response["msg"] === "Already Registerd Member"){
           this.message = "Email Already Registered"
           this.showMsg = true;
         }else{
+          console.log(response);
           this.router.navigate(['/login']);
         }        
       }

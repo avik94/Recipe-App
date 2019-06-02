@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { ServerService } from 'src/app/server.service';
 
 @Component({
   selector: 'app-new-recipe',
@@ -14,8 +15,11 @@ export class NewRecipeComponent implements OnInit {
   previewImage;
   editMode = false;
   recipeForm:FormGroup
-  constructor( private route:ActivatedRoute, 
-    private recipeService:RecipeService, private router:Router ) { }
+  constructor( 
+    private route:ActivatedRoute, 
+    private recipeService:RecipeService, 
+    private router:Router, 
+    private serverService: ServerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -59,8 +63,19 @@ export class NewRecipeComponent implements OnInit {
   saveForm(){
     if (this.editMode){
       this.recipeService.updateRecipe(this.index,this.recipeForm.value);
+      this.serverService.editRecipe(this.recipeForm.value).subscribe(
+        (data)=>{
+          console.log(data)
+        }
+      )
+
       this.router.navigate(['recipe',this.index, 'detail']);
     }else{
+      this.serverService.createRecipe(this.recipeForm.value).subscribe(
+        (data)=>{
+          console.log(data)
+        }
+      )
       this.recipeService.addRecipe(this.recipeForm.value)
       this.router.navigate(['recipe']);
     }
@@ -70,6 +85,7 @@ export class NewRecipeComponent implements OnInit {
   cancel(){
     if(this.editMode){
       this.router.navigate(['recipe',this.index, 'detail']);
+      localStorage.removeItem('recipeId')
     }else{
       this.router.navigate(['recipe']);
     }

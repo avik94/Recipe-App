@@ -2,6 +2,7 @@ import { Recipe } from './recipe.model';
 import { Ingredient } from '../shopping/ingredient.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { IngredientService } from '../shared/ingredient.service';
+import { ServerService } from '../server.service';
 
 @Injectable()
 export class RecipeService{
@@ -18,8 +19,10 @@ export class RecipeService{
          ])
     ]
     recipesChanges = new EventEmitter();
-    constructor( private ingredientService: IngredientService ){ }
+    constructor( private ingredientService: IngredientService,
+        private serverServer:ServerService ){ }
 
+    avik;
     getRecipes(){
         return this.recipes.slice();
     }
@@ -44,5 +47,11 @@ export class RecipeService{
     getSeparateIngredience(id){
         const ingredience = this.ingredientService.getIngredient().slice();
         this.getRecipeById(id).ingredient = ingredience;
-    }    
+    }
+    placeRecipeFromDatabase(data:Recipe[]){
+        this.recipes = data;
+        this.recipesChanges.emit(this.recipes.slice());
+        
+    }
+
 }
